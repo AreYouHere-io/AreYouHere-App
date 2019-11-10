@@ -107,10 +107,4 @@ export class Tab3Page {
     })
     return await modal.present()
   }
-  public form = [
-    { val: 'Khoi Tran', isChecked: true },
-    { val: 'Hieu Tran', isChecked: false },
-    { val: 'Ngoc Tran', isChecked: false },
-    { val: 'Lan Vu', isChecked: false }
-  ]
 }

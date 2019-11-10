@@ -4,31 +4,29 @@
       Scanner
     </ion-title>
     <ion-avatar (click)="presentPopover($event)" slot="end">
-      <img src="..\assets\khoi visa.jpg">
+      <img src="..\assets\khoi.jpg">
     </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-title>
-    {{barcodeData.text}}
-    
-      <!--<ion-button (click)="presentAlert()">alert</ion-button> -->
-      <div class="success-checkmark" *ngIf="isChecked"> 
-          <div class="check-icon">
-            <span class="icon-line line-tip"></span>
-            <span class="icon-line line-long"></span>
-            <div class="icon-circle"></div>
-            <div class="icon-fix"></div>
-          </div>
-        </div>
-      
+    {{title}}
+    <div class="success-checkmark" *ngIf="status">
+      <div class="check-icon">
+        <span class="icon-line line-tip"></span>
+        <span class="icon-line line-long"></span>
+        <div class="icon-circle"></div>
+        <div class="icon-fix"></div>
+      </div>
+    </div>
+
 
   </ion-title>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="scanBarcode()">
       <ion-icon name="qr-scanner"></ion-icon>
     </ion-fab-button>
-   
+
   </ion-fab>
 </ion-content>

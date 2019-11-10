@@ -10,17 +10,15 @@ import { AlertController } from '@ionic/angular'
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  barcodeData = {
-    text: 'Press button to scan 👇'
-  }
-  status
+  title = 'Press button to scan 👇'
+  status = false
 
   constructor(
     public popoverController: PopoverController,
     private barcodeScanner: BarcodeScanner,
     public alertController: AlertController
   ) {}
-  public isChecked = false
+
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: Popover2Component,
@@ -29,13 +27,11 @@ export class Tab2Page {
     })
     return await popover.present()
   }
-  async presentAlert() {
+
+  async presentAlert(message) {
     const alert = await this.alertController.create({
-      header: 'Alert',
-
-      buttons: ['OK']
+      message: message
     })
-
     await alert.present()
   }
 
@@ -47,7 +43,6 @@ export class Tab2Page {
         disableSuccessBeep: true // iOS and Android
       })
       .then(barcodeData => {
-        // this.barcodeData = barcodeData
         this.postData(barcodeData.text)
         console.log(barcodeData)
       })
@@ -70,7 +65,19 @@ export class Tab2Page {
 
       fetch(url, options).then(response =>
         response.json().then(data => {
-          status = data.status
+          if (data.status) {
+            this.title = ''
+            this.status = data.status
+            setTimeout(() => {
+              this.title = 'Press button to scan 👇'
+              this.status = false
+            }, 3000)
+          } else {
+            this.presentAlert('You Are Not Here!')
+            setTimeout(() => {
+              this.alertController.dismiss()
+            }, 3000)
+          }
         })
       )
     } catch (error) {
