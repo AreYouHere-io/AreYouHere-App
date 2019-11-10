@@ -1,5 +1,8 @@
 import { Component } from '@angular/core'
-// import { HTTP } from '@ionic-native/http/ngx'
+import { PopoverController } from '@ionic/angular'
+import { ModalController } from '@ionic/angular'
+import { PopoverComponent } from '../popover/popover.component'
+import { ModalComponent } from '../modal/modal.component'
 
 @Component({
   selector: 'app-tab3',
@@ -7,29 +10,24 @@ import { Component } from '@angular/core'
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  constructor() {}
   public list = []
   public data = []
   public counter 
   public counter2
   ionViewDidEnter(){
     this.getData()
-    
-    this.list = this.data
+  
   }
   onButtonClicked() {
     this.post()
   }
   post(){
-    this.data.forEach((element) => {
-      if (element.status)
+    this.list.forEach((element) => {
+      if (element.status) {
         this.postData(element.student.id)
-    });
-    this.getData()
-    console.log("??")
-    //location.reload()
-    
-    
+        element.status2 = element.status
+      }
+    }); 
   }
    async getData() {
     try {
@@ -43,6 +41,13 @@ export class Tab3Page {
           this.data.forEach((element) => {
             if (!element.status){
               this.list[this.counter2] = this.data[this.counter]
+              this.list[this.counter2].status2 = this.list[this.counter2].status
+               let strArray = this.list[this.counter2].student.name.split(/(?=[A-Z])/);
+               let str = ""
+               strArray.forEach((element) => {
+                str += element + " "
+              }); 
+              this.list[this.counter2].student.name = str
               this.counter2++
             }
             this.counter++
@@ -87,4 +92,46 @@ export class Tab3Page {
       }
   }
 
+  constructor( public modalController: ModalController, public popoverController:PopoverController){}
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: ev,
+      translucent: true
+    })
+    return await popover.present()
+  }
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalComponent
+    })
+    return await modal.present()
+  }
+  public form = [
+    { val: 'Khoi Tran', isChecked: true },
+    { val: 'Hieu Tran', isChecked: false },
+    { val: 'Ngoc Tran', isChecked: false },
+    { val: 'Lan Vu', isChecked: false }
+  ]
+
+  /*
+  public res;
+  newPost = {
+    //title: 'All about Fetch!',
+    
+  }
+  options = {
+    method: 'GET',
+    headers: new Headers({
+        'Content-Type': 'application/json'
+    })
+  }
+  ionViewDidEnter(){
+    fetch(`http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/students`)
+    .then(res => res.json())
+    .then(data => console.log(data.response))
+  }
+
+  updateList(){
+  }*/
 }

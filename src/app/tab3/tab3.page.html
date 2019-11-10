@@ -1,17 +1,27 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Approve Students
+      Students Attended
     </ion-title>
+    <ion-avatar (click)="presentPopover($event)" slot="end">
+      <img src="..\assets\khoi visa.jpg">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
      <ion-item *ngFor="let entry of list">
-      <ion-checkbox  mode="md" slot="end" [(ngModel)]="entry.status"></ion-checkbox>
-      <ion-label > {{entry.student.name}} </ion-label>
+      <ion-checkbox small class="checbox-circle"  mode="ios" slot="end" [(ngModel)]="entry.status" *ngIf="!entry.status2"></ion-checkbox>
+      <ion-label *ngIf="!entry.status2" > {{entry.student.name}} </ion-label>
     </ion-item>
   </ion-list>
-  <ion-button (click)="onButtonClicked()">Refresh</ion-button>
+  <div style="text-align: center;">
+    <ion-button size="small" fill="outline" type="submit" (click)="onButtonClicked()"> SUBMIT </ion-button>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="key"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
