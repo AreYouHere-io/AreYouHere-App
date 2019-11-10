@@ -4,7 +4,7 @@
       Students Attended
     </ion-title>
     <ion-avatar (click)="presentPopover($event)" slot="end">
-      <img src="..\assets\khoi.jpg">
+      <img src="..\assets\lan.jpg" alt="LV">
     </ion-avatar>
   </ion-toolbar>
 </ion-header>
@@ -17,9 +17,8 @@
     </ion-item>
   </ion-list>
   <div style="text-align: center;">
-    <ion-chip color="primary" outline (click)="onButtonClicked()">
-      <ion-label color="primary" style="width: 60px;"> CHECKIN </ion-label>
-    </ion-chip>
+    <ion-button color="primary" fill="outline" (click)="onButtonClicked()"> CHECKIN </ion-button>
+
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="presentModal()">
