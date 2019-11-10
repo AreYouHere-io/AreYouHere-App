@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Approve Students
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let entry of data">
+      <ion-checkbox mode="md" slot="end"></ion-checkbox>
+      <ion-label> {{entry.name}} </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="onButtonClicked()">Refresh</ion-button>
+</ion-content>
