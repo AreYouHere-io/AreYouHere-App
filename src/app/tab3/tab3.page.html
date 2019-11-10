@@ -4,7 +4,7 @@
       Students Attended
     </ion-title>
     <ion-avatar (click)="presentPopover($event)" slot="end">
-        <img src="..\assets\khoi visa.jpg"> 
+      <img src="..\assets\khoi visa.jpg">
     </ion-avatar>
   </ion-toolbar>
 </ion-header>
@@ -17,14 +17,11 @@
     </ion-item>
   </ion-list>
   <div style="text-align: center;">
-    <ion-button size="small" fill="outline" type="submit" (click) ="updateList()"> SUBMIT </ion-button>
+    <ion-button size="small" fill="outline" type="submit" (click)="updateList()"> SUBMIT </ion-button>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click) = "presentModal()">
-          <ion-avatar>
-              <img src="..\assets\qr.png">
-            </ion-avatar>
-      </ion-fab-button>
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="key"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
 </ion-content>
-

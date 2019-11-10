@@ -10,7 +10,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx'
 })
 export class Tab2Page {
   barcodeData = {
-    text: 'press button to scan'
+    text: 'Press button to scan 👇'
   }
 
   constructor(
@@ -30,30 +30,10 @@ export class Tab2Page {
 
   scanBarcode() {
     this.barcodeScanner
-      .scan()
+      .scan({
+        disableSuccessBeep: true // iOS and Android
+      })
       .then(barcodeData => {
-        // success. barcodeData is the data returned by scanner
-        // try {
-        //   const url =
-        //     'http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/checkin'
-        //   const options = {
-        //     method: 'POST',
-        //     body: 'nmt130942',
-        //     headers: new Headers({
-        //       'Content-Type': 'application/json'
-        //     })
-        //   }
-
-        //   fetch(url, options).then(response =>
-        //     response.json().then(data => {
-        //       console.log(data)
-        //     })
-        //   )
-        // } catch (error) {
-        //   console.error(error.status)
-        //   console.error(error.error) // Error message as string
-        //   console.error(error.headers)
-        // }
         this.barcodeData = barcodeData
         console.log(barcodeData)
       })

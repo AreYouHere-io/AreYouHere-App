@@ -30,6 +30,8 @@ export class LoginPage implements OnInit {
     } else if (this.isStudent) {
       this.isStudent = false
       this.navCtr.navigateForward('/tabs/tab2')
-    } else return
+    } else {
+      this.navCtr.navigateForward('/tabs/tab2')
+    }
   }
 }

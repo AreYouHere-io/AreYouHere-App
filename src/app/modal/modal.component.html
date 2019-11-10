@@ -1,10 +1,17 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Generated Bar Code
-        
-      </ion-title>
-      <ion-button slot="end" (click)="close()"> Close </ion-button> 
-          
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Generated QR Code
+    </ion-title>
+    <ion-button slot="end" (click)="close()"> Close </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <qrcode [qrdata]="myAngularxQrCode" [size]="256" [level]="'M'"></qrcode>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
