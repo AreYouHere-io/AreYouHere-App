@@ -23,5 +23,8 @@ export class ModalComponent implements OnInit {
 
   close() {
     this.modalcontroller.dismiss()
+    setTimeout(function() {
+      location.reload()
+    }, 200)
   }
 }

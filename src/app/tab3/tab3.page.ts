@@ -12,24 +12,26 @@ import { ModalComponent } from '../modal/modal.component'
 export class Tab3Page {
   public list = []
   public data = []
-  public counter 
+  public counter
   public counter2
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.getData()
-  
   }
   onButtonClicked() {
     this.post()
   }
-  post(){
-    this.list.forEach((element) => {
+  post() {
+    this.list.forEach(element => {
       if (element.status) {
         this.postData(element.student.id)
         element.status2 = element.status
       }
-    }); 
+    })
+    setTimeout(function() {
+      location.reload()
+    }, 200)
   }
-   async getData() {
+  async getData() {
     try {
       const url =
         'http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/session/dump'
@@ -38,29 +40,24 @@ export class Tab3Page {
           this.data = data.atts
           this.counter = 0
           this.counter2 = 0
-          this.data.forEach((element) => {
-            if (!element.status){
+          this.data.forEach(element => {
+            if (!element.status) {
               this.list[this.counter2] = this.data[this.counter]
               this.list[this.counter2].status2 = this.list[this.counter2].status
-               let strArray = this.list[this.counter2].student.name.split(/(?=[A-Z])/);
-               let str = ""
-               strArray.forEach((element) => {
-                str += element + " "
-              }); 
+              let strArray = this.list[this.counter2].student.name.split(
+                /(?=[A-Z])/
+              )
+              let str = ''
+              strArray.forEach(element => {
+                str += element + ' '
+              })
               this.list[this.counter2].student.name = str
               this.counter2++
             }
             this.counter++
-          }); 
+          })
         })
       )
-      
-
-      // return await this.http.get(url, params, headers)
-      // console.log(response.status)
-      // console.log(response.headers)
-      // return JSON.parse(response.data) // JSON data returned by server
-      
     } catch (error) {
       console.error(error.status)
       console.error(error.error) // Error message as string
@@ -68,31 +65,34 @@ export class Tab3Page {
     }
   }
   async postData(id) {
-      try {
-        const url =
-          'http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/prof/checkin'
-        const options = {
-          method: 'POST',
-          body: id,
-          headers: new Headers({
-              'Content-Type': 'application/json'
-          })
-        }
-        
-        fetch(url, options).then(response =>
-          response.json().then(data => {
-            this.data = data
-            console.log(this.data)
-          })
-        )
-      } catch (error) {
-        console.error(error.status)
-        console.error(error.error) // Error message as string
-        console.error(error.headers)
+    try {
+      const url =
+        'http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/prof/checkin'
+      const options = {
+        method: 'POST',
+        body: id,
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
       }
+
+      fetch(url, options).then(response =>
+        response.json().then(data => {
+          this.data = data
+          console.log(this.data)
+        })
+      )
+    } catch (error) {
+      console.error(error.status)
+      console.error(error.error) // Error message as string
+      console.error(error.headers)
+    }
   }
 
-  constructor( public modalController: ModalController, public popoverController:PopoverController){}
+  constructor(
+    public modalController: ModalController,
+    public popoverController: PopoverController
+  ) {}
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
@@ -113,25 +113,4 @@ export class Tab3Page {
     { val: 'Ngoc Tran', isChecked: false },
     { val: 'Lan Vu', isChecked: false }
   ]
-
-  /*
-  public res;
-  newPost = {
-    //title: 'All about Fetch!',
-    
-  }
-  options = {
-    method: 'GET',
-    headers: new Headers({
-        'Content-Type': 'application/json'
-    })
-  }
-  ionViewDidEnter(){
-    fetch(`http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/students`)
-    .then(res => res.json())
-    .then(data => console.log(data.response))
-  }
-
-  updateList(){
-  }*/
 }

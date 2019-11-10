@@ -12,6 +12,7 @@ export class Tab2Page {
   barcodeData = {
     text: 'Press button to scan 👇'
   }
+  status
 
   constructor(
     public popoverController: PopoverController,
@@ -34,11 +35,36 @@ export class Tab2Page {
         disableSuccessBeep: true // iOS and Android
       })
       .then(barcodeData => {
-        this.barcodeData = barcodeData
+        // this.barcodeData = barcodeData
+        this.postData(barcodeData.text)
         console.log(barcodeData)
       })
       .catch(err => {
         // error
       })
+  }
+
+  async postData(text) {
+    try {
+      const url =
+        'http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/student/checkin'
+      const options = {
+        method: 'POST',
+        body: 'nmt130942' + '?' + text,
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      }
+
+      fetch(url, options).then(response =>
+        response.json().then(data => {
+          status = data.status
+        })
+      )
+    } catch (error) {
+      console.error(error.status)
+      console.error(error.error) // Error message as string
+      console.error(error.headers)
+    }
   }
 }
