@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Popover2Component } from '../popover2/popover2.component'
 import { PopoverController } from '@ionic/angular'
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx'
+import { AlertController } from '@ionic/angular'
 
 @Component({
   selector: 'app-tab2',
@@ -16,8 +17,10 @@ export class Tab2Page {
 
   constructor(
     public popoverController: PopoverController,
-    private barcodeScanner: BarcodeScanner
+    private barcodeScanner: BarcodeScanner,
+    public alertController: AlertController
   ) {}
+  public isChecked = false
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: Popover2Component,
@@ -25,6 +28,15 @@ export class Tab2Page {
       translucent: true
     })
     return await popover.present()
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+
+      buttons: ['OK']
+    })
+
+    await alert.present()
   }
 
   ngOnInit() {}
