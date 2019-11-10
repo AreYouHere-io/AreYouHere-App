@@ -1,27 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
     <ion-grid style="height: 100%">
-        <ion-row justify-content-center align-items-center style="height: 80%">
-  <ion-card style="vertical-align: center;">
+        <ion-row justify-content-center align-items-center style="height: 100%">
+  <ion-card style="width: 300px;">
+      <ion-card-header>
+          <ion-card-title color="primary" style="text-align: center;">Are You Here</ion-card-title>
+        </ion-card-header>
       <ion-card-content>
-        <ion-list>
-          <ion-item> 
+       <!-- <ion-list>
+          <ion-item id="rounded"> 
             
               <ion-input placeholder="Username" [(ngModel)]="name" type="text">  </ion-input>
+            
           </ion-item>
-          <ion-item> 
+          <ion-item id="rounded"> 
               
                 <ion-input placeholder="Password"  [(ngModel)]="password" type="password">  </ion-input>
             </ion-item>
-        </ion-list>
-        <div style="text-align: center; margin-top: 20px;">
-            <ion-button size="small" fill="outline" type="submit" tab="login" (click)="login()"> LOGIN </ion-button> 
-        </div>
+        </ion-list> -->
+        <ion-button size="small" fill="outline" expand="block" (click)="professorLogin()"> Professor </ion-button>
+        <ion-button size="small" fill="outline" expand="block" (click)="studentLogin()"> Student </ion-button>
+        
     </ion-card-content>
 </ion-card>
 </ion-row>

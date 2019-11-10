@@ -12,12 +12,12 @@
 <ion-content>
   <ion-list>
      <ion-item *ngFor="let entry of list">
-      <ion-checkbox small class="checbox-circle"  mode="ios" slot="end" [(ngModel)]="entry.status" *ngIf="!entry.status2"></ion-checkbox>
+      <ion-checkbox small mode="ios" slot="end" [(ngModel)]="entry.status" *ngIf="!entry.status2"></ion-checkbox>
       <ion-label *ngIf="!entry.status2" > {{entry.student.name}} </ion-label>
     </ion-item>
   </ion-list>
   <div style="text-align: center;">
-    <ion-button size="small" fill="outline" type="submit" (click)="onButtonClicked()"> SUBMIT </ion-button>
+    <ion-chip color="primary" outline (click)="onButtonClicked()"> <ion-label color="primary" style="width: 60px;"> CHECKIN </ion-label> </ion-chip>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="presentModal()">

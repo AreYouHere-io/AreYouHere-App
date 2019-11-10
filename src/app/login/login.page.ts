@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   password
 
   ngOnInit() {}
-  login() {
+  /*login() {
     if (this.name == 'Son' && this.password == '123') {
       this.isProfessor = true
     }
@@ -31,5 +31,11 @@ export class LoginPage implements OnInit {
     } else {
       this.navCtr.navigateForward('/tabs/tab2')
     }
+  } */
+  professorLogin(){
+    this.navCtr.navigateForward('/tabs/tab3')
+  }
+  studentLogin(){
+    this.navCtr.navigateForward('/tabs/tab2')
   }
 }
