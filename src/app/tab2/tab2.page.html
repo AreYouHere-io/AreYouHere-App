@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Scanner
     </ion-title>
+    <ion-avatar (click)="presentPopover($event)" slot="end">
+      <img src="..\assets\khoi visa.jpg">
+
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-title>
+    {{barcodeData.text}}
+  </ion-title>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="scanBarcode()">
+      <ion-icon name="qr-scanner"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

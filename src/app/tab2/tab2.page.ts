@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { Popover2Component } from '../popover2/popover2.component'
+import { PopoverController } from '@ionic/angular'
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx'
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +9,56 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  barcodeData = {
+    text: 'press button to scan'
+  }
 
-  constructor() {}
+  constructor(
+    public popoverController: PopoverController,
+    private barcodeScanner: BarcodeScanner
+  ) {}
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: Popover2Component,
+      event: ev,
+      translucent: true
+    })
+    return await popover.present()
+  }
 
+  ngOnInit() {}
+
+  scanBarcode() {
+    this.barcodeScanner
+      .scan()
+      .then(barcodeData => {
+        // success. barcodeData is the data returned by scanner
+        // try {
+        //   const url =
+        //     'http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/checkin'
+        //   const options = {
+        //     method: 'POST',
+        //     body: 'nmt130942',
+        //     headers: new Headers({
+        //       'Content-Type': 'application/json'
+        //     })
+        //   }
+
+        //   fetch(url, options).then(response =>
+        //     response.json().then(data => {
+        //       console.log(data)
+        //     })
+        //   )
+        // } catch (error) {
+        //   console.error(error.status)
+        //   console.error(error.error) // Error message as string
+        //   console.error(error.headers)
+        // }
+        this.barcodeData = barcodeData
+        console.log(barcodeData)
+      })
+      .catch(err => {
+        // error
+      })
+  }
 }

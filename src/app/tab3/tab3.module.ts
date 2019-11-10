@@ -1,10 +1,11 @@
-import { IonicModule } from '@ionic/angular'
-import { RouterModule } from '@angular/router'
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { FormsModule } from '@angular/forms'
-// import { HttpClientModule } from '@angular/common/http'
-import { Tab3Page } from './tab3.page'
+import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Tab3Page } from './tab3.page';
+import { PopoverComponent } from '../popover/popover.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,10 @@ import { Tab3Page } from './tab3.page'
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }])
   ],
-  // providers: [HttpClientModule],
-  declarations: [Tab3Page]
+  entryComponents: [PopoverComponent, ModalComponent],
+  declarations: [Tab3Page, PopoverComponent, ModalComponent]
 })
-export class Tab3PageModule {}
+
+export class Tab3PageModule {
+  
+}
