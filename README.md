@@ -17,15 +17,15 @@ AreYouHere is a cross-platform mobile application for both students and professo
 ### Professor View
 
 <p align="center">
-  <img alt="AreYouHere - Professor View 1" height="500" style="margin-left: -150px" src="./screenshots/iphonexspacegrey_prof1.png" />
-  <img alt="AreYouHere - Professor View 2" height="500" style="margin-left: -150px" src="./screenshots/iphonexspacegrey_prof2.png" />
+  <img alt="AreYouHere - Professor View 1" height="434" src="./screenshots/iphonexspacegrey_prof1.png" />
+  <img alt="AreYouHere - Professor View 2" height="434" src="./screenshots/iphonexspacegrey_prof2.png" />
 </p>
 
 ### Student View
 
 <p align="center">
-  <img alt="AreYouHere - Student View 1" height="500" style="margin-left: -150px" src="./screenshots/iphone8spacegrey_student1.png" />
-  <img alt="AreYouHere - Student View 2" height="500" style="margin-left: -150px" src="./screenshots/iphone8spacegrey_student2.png" />
+  <img alt="AreYouHere - Student View 1" height="434" src="./screenshots/iphone8spacegrey_student1.png" />
+  <img alt="AreYouHere - Student View 2" height="434" src="./screenshots/iphone8spacegrey_student2.png" />
 </p>
 
 ## How we built it
